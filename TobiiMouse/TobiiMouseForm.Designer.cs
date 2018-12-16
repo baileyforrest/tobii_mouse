@@ -1,29 +1,14 @@
-﻿using Tobii.Interaction;
-using System;
+﻿using System;
+using System.Windows.Forms;
+using Tobii.Interaction;
+using System.Drawing;
+
+using Rec = System.Drawing.Rectangle;
 
 namespace TobiiMouse
 {
     partial class TobiiMouseForm
     {
-        GazePointDataStream _stream;
-
-        public TobiiMouseForm(Host host)
-        {
-            _stream = host.Streams.CreateGazePointDataStream();
-            // TODO: Exit the program
-            if (_stream == null)
-            {
-                return;
-            }
-
-            _stream.GazePoint(OnGazeData);
-        }
-
-        void OnGazeData(double x, double y, double timestamp)
-        {
-            Console.WriteLine("X: {0} Y:{1}", x, y);
-        }
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -50,10 +35,17 @@ namespace TobiiMouse
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // TobiiMouseForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Name = "TobiiMouseForm";
+            this.Text = "TobiiMouse";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
