@@ -1,7 +1,29 @@
-﻿namespace TobiiMouse
+﻿using Tobii.Interaction;
+using System;
+
+namespace TobiiMouse
 {
-    partial class Form1
+    partial class TobiiMouseForm
     {
+        GazePointDataStream _stream;
+
+        public TobiiMouseForm(Host host)
+        {
+            _stream = host.Streams.CreateGazePointDataStream();
+            // TODO: Exit the program
+            if (_stream == null)
+            {
+                return;
+            }
+
+            _stream.GazePoint(OnGazeData);
+        }
+
+        void OnGazeData(double x, double y, double timestamp)
+        {
+            Console.WriteLine("X: {0} Y:{1}", x, y);
+        }
+
         /// <summary>
         /// Required designer variable.
         /// </summary>

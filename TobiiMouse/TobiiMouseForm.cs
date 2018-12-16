@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TobiiMouse
 {
-    public partial class Form1 : Form
+    public partial class TobiiMouseForm : Form
     {
-        public Form1()
+        public TobiiMouseForm()
         {
             InitializeComponent();
         }
